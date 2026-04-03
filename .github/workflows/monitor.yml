@@ -1,1 +1,45 @@
+name: Monitor Empleo Público
 
+on:
+  schedule:
+    # Una ejecución diaria a las 16:00 hora Canarias (UTC+0 en invierno)
+    - cron: '0 16 * * *'
+  workflow_dispatch:        # Permite ejecutarlo manualmente desde GitHub
+
+jobs:
+  monitorizar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependencias
+        run: pip install requests beautifulsoup4
+
+      - name: Restaurar estado anterior de las webs
+        uses: actions/cache@v4
+        with:
+          path: estado_webs.json
+          key: estado-webs-${{ github.run_id }}
+          restore-keys: |
+            estado-webs-
+
+      - name: Ejecutar monitor
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python monitor_empleo.py
+
+      - name: Guardar log como artefacto
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: log-${{ github.run_number }}
+          path: monitor_empleo.log
+          retention-days: 7
