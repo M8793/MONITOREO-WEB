@@ -2,13 +2,14 @@ name: Monitor Empleo Público
 
 on:
   schedule:
-    # Una ejecución diaria a las 16:00 hora Canarias (UTC+0 en invierno)
     - cron: '0 16 * * *'
-  workflow_dispatch:        # Permite ejecutarlo manualmente desde GitHub
+  workflow_dispatch:
 
 jobs:
   monitorizar:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Descargar repositorio
@@ -22,7 +23,7 @@ jobs:
       - name: Instalar dependencias
         run: pip install requests beautifulsoup4
 
-      - name: Restaurar estado anterior de las webs
+      - name: Restaurar estado anterior
         uses: actions/cache@v4
         with:
           path: estado_webs.json
@@ -35,6 +36,14 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python monitor_empleo.py
+
+      - name: Publicar historial en GitHub Pages
+        run: |
+          git config user.name "Monitor Bot"
+          git config user.email "monitor@github-actions"
+          git add historial.json
+          git diff --staged --quiet || git commit -m "📊 Actualizar historial $(date +'%d/%m/%Y %H:%M')"
+          git push
 
       - name: Guardar log como artefacto
         if: always()
