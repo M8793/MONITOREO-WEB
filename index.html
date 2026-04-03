@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monitor de Empleo Público · Canarias</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  background: #f0f4ff;
+  min-height: 100vh;
+  color: #1e1e3a;
+}
+
+/* ── HEADER ── */
+.hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 48px 24px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -40px;
+  width: 250px; height: 250px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+}
+
+.hero-icon {
+  font-size: 52px;
+  margin-bottom: 16px;
+  display: block;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+.hero h1 {
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(24px, 5vw, 38px);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.hero p {
+  color: rgba(255,255,255,0.75);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 100px;
+  padding: 8px 20px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+.dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 0 0 rgba(74,222,128,0.6);
+  animation: ping 2s infinite;
+}
+
+@keyframes ping {
+  0%   { box-shadow: 0 0 0 0 rgba(74,222,128,0.6); }
+  70%  { box-shadow: 0 0 0 8px rgba(74,222,128,0); }
+  100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
+}
+
+/* ── CONTENIDO ── */
+.content {
+  max-width: 860px;
+  margin: -40px auto 0;
+  padding: 0 20px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── STATS ── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px 20px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(102,126,234,0.10);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(102,126,234,0.15);
+}
+
+.stat-emoji { font-size: 32px; margin-bottom: 8px; display: block; }
+
+.stat-num {
+  font-family: 'Nunito', sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-num.verde  { color: #10b981; }
+.stat-num.azul   { color: #667eea; }
+.stat-num.naranja{ color: #f59e0b; }
+.stat-num.rosa   { color: #ec4899; }
+
+.stat-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ── SECCIÓN ── */
+.seccion {
+  margin-bottom: 32px;
+}
+
+.seccion-titulo {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #1e1e3a;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── TARJETAS WEB ── */
+.web-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 22px 24px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 20px rgba(102,126,234,0.08);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.web-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(102,126,234,0.15);
+}
+
+.web-icon {
+  width: 52px; height: 52px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.web-icon.verde   { background: #d1fae5; }
+.web-icon.azul    { background: #dbeafe; }
+.web-icon.violeta { background: #ede9fe; }
+.web-icon.rosa    { background: #fce7f3; }
+.web-icon.rojo    { background: #fee2e2; }
+
+.web-info { flex: 1; min-width: 0; }
+
+.web-nombre {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: #1e1e3a;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.web-meta {
+  font-size: 12px;
+  color: #94a3b8;
+  font-weight: 600;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 14px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.chip.ok     { background: #d1fae5; color: #065f46; }
+.chip.error  { background: #fee2e2; color: #991b1b; }
+.chip.nuevo  { background: #fef3c7; color: #92400e; }
+
+/* ── HISTORIAL ── */
+.historial-vacio {
+  background: #fff;
+  border-radius: 20px;
+  padding: 48px 24px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(102,126,234,0.08);
+}
+
+.historial-vacio .icon { font-size: 48px; margin-bottom: 12px; display: block; }
+.historial-vacio p { color: #94a3b8; font-weight: 600; font-size: 14px; }
+
+.evento-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 22px 24px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 20px rgba(102,126,234,0.08);
+  border-left: 4px solid #667eea;
+  animation: slideIn 0.4s ease both;
+}
+
+@keyframes slideIn {
+  from { opacity:0; transform: translateX(-10px); }
+  to   { opacity:1; transform: translateX(0); }
+}
+
+.evento-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.evento-web {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: #667eea;
+}
+
+.evento-fecha {
+  font-size: 12px;
+  color: #94a3b8;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.cambio-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 12px;
+  background: #f8faff;
+  border-radius: 10px;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #334155;
+  font-weight: 600;
+}
+
+.cambio-item .plus {
+  background: #d1fae5;
+  color: #065f46;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.ver-web {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #667eea;
+  text-decoration: none;
+  padding: 8px 16px;
+  background: #f0f0ff;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+.ver-web:hover { background: #e0e0ff; }
+
+/* ── LOADING ── */
+#loading {
+  text-align: center;
+  padding: 80px 24px;
+}
+
+.loader {
+  width: 44px; height: 44px;
+  border: 3px solid #e0e7ff;
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+#loading p {
+  color: #94a3b8;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 24px;
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 560px) {
+  .web-card { flex-wrap: wrap; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="hero-icon">🔍</span>
+  <h1>Monitor de Empleo Público</h1>
+  <p>Canarias · Vigilancia automática de convocatorias</p>
+  <div class="status-pill">
+    <div class="dot"></div>
+    <span id="hero-estado">Cargando...</span>
+  </div>
+</div>
+
+<div class="content">
+
+  <div id="loading">
+    <div class="loader"></div>
+    <p>Cargando datos del monitor...</p>
+  </div>
+
+  <div id="app" style="display:none">
+
+    <!-- STATS -->
+    <div class="stats" id="stats"></div>
+
+    <!-- WEBS -->
+    <div class="seccion">
+      <div class="seccion-titulo">🌐 Webs monitorizadas</div>
+      <div id="webs"></div>
+    </div>
+
+    <!-- HISTORIAL -->
+    <div class="seccion">
+      <div class="seccion-titulo">📋 Historial de cambios</div>
+      <div id="historial"></div>
+    </div>
+
+  </div>
+</div>
+
+<footer id="footer">Monitor de Empleo Público · Actualización automática diaria a las 16:00h</footer>
+
+<script>
+const ICONOS = ["🏛️","🏝️","🏥","📋"];
+const COLORES = ["verde","azul","violeta","rosa"];
+
+async function cargarDatos() {
+  try {
+    const r = await fetch('historial.json?t=' + Date.now());
+    if (!r.ok) throw new Error();
+    return await r.json();
+  } catch { return null; }
+}
+
+function fmt(iso) {
+  if (!iso) return '—';
+  const d = new Date(iso);
+  return d.toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',year:'numeric'})
+    + ' · ' + d.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+}
+
+function relativo(iso) {
+  if (!iso) return null;
+  const diff = Date.now() - new Date(iso).getTime();
+  const min = Math.floor(diff/60000);
+  const h   = Math.floor(diff/3600000);
+  const d   = Math.floor(diff/86400000);
+  if (min < 2)  return 'ahora mismo';
+  if (min < 60) return `hace ${min} min`;
+  if (h < 24)   return `hace ${h}h`;
+  if (d === 1)  return 'ayer';
+  return `hace ${d} días`;
+}
+
+function render(datos) {
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+
+  const webs     = datos.webs || [];
+  const historial = datos.historial || [];
+  const ultima   = datos.ultima_comprobacion;
+
+  const ok     = webs.filter(w => w.estado === 'ok').length;
+  const fallos = webs.filter(w => w.estado === 'error').length;
+  const total  = historial.length;
+
+  // Hero
+  document.getElementById('hero-estado').textContent =
+    fallos > 0
+      ? `${fallos} web${fallos>1?'s':''} con fallo · Revisado ${relativo(ultima)}`
+      : `Todo activo · Revisado ${relativo(ultima)}`;
+
+  // Stats
+  document.getElementById('stats').innerHTML = `
+    <div class="stat-card">
+      <span class="stat-emoji">✅</span>
+      <div class="stat-num verde">${ok}</div>
+      <div class="stat-label">Webs activas</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-emoji">⚠️</span>
+      <div class="stat-num naranja">${fallos}</div>
+      <div class="stat-label">Con fallos</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-emoji">🔔</span>
+      <div class="stat-num azul">${total}</div>
+      <div class="stat-label">Cambios totales</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-emoji">🕐</span>
+      <div class="stat-num rosa" style="font-size:20px;padding-top:6px">${relativo(ultima)||'—'}</div>
+      <div class="stat-label">Última revisión</div>
+    </div>
+  `;
+
+  // Webs
+  document.getElementById('webs').innerHTML = webs.map((w, i) => {
+    const icono  = ICONOS[i] || '🌐';
+    const color  = w.estado === 'ok' ? COLORES[i] || 'azul' : 'rojo';
+    const chip   = w.estado === 'ok'
+      ? '<span class="chip ok">✓ Activa</span>'
+      : '<span class="chip error">✗ Fallo</span>';
+    const cambio = w.ultimo_cambio
+      ? `<span>⚡ Último cambio ${relativo(w.ultimo_cambio)}</span>`
+      : `<span>Sin cambios aún</span>`;
+    return `
+      <a class="web-card" href="${w.url}" target="_blank" rel="noopener">
+        <div class="web-icon ${color}">${icono}</div>
+        <div class="web-info">
+          <div class="web-nombre">${w.nombre}</div>
+          <div class="web-meta">
+            <span>🕐 ${fmt(w.ultima_comprobacion)}</span>
+            ${cambio}
+          </div>
+        </div>
+        ${chip}
+      </a>`;
+  }).join('');
+
+  // Historial
+  const cont = document.getElementById('historial');
+  if (!historial.length) {
+    cont.innerHTML = `
+      <div class="historial-vacio">
+        <span class="icon">🎉</span>
+        <p>Todo tranquilo por aquí.<br>Cuando haya cambios en las webs aparecerán aquí.</p>
+      </div>`;
+  } else {
+    const ordenado = [...historial].reverse();
+    cont.innerHTML = ordenado.map((ev, idx) => {
+      const cambios = (ev.cambios||[]).slice(0,8).map(c =>
+        `<div class="cambio-item"><span class="plus">NUEVO</span>${c.substring(0,100)}</div>`
+      ).join('');
+      const mas = ev.cambios && ev.cambios.length > 8
+        ? `<div style="font-size:12px;color:#94a3b8;margin-top:6px;font-weight:600">
+             + ${ev.cambios.length - 8} cambios más</div>` : '';
+      return `
+        <div class="evento-card" style="animation-delay:${idx*0.05}s">
+          <div class="evento-header">
+            <div class="evento-web">📌 ${ev.web}</div>
+            <div class="evento-fecha">📅 ${fmt(ev.fecha)}</div>
+          </div>
+          ${cambios}${mas}
+          <a class="ver-web" href="${ev.url}" target="_blank" rel="noopener">
+            Ver página →
+          </a>
+        </div>`;
+    }).join('');
+  }
+
+  document.getElementById('footer').textContent =
+    `Monitor de Empleo Público · Última comprobación: ${fmt(ultima)} · Actualización automática diaria`;
+}
+
+function renderError() {
+  document.getElementById('loading').innerHTML = `
+    <span style="font-size:48px;display:block;margin-bottom:16px">🚀</span>
+    <p style="color:#94a3b8;font-weight:700;font-size:14px;max-width:300px;margin:0 auto">
+      Ejecuta el workflow en GitHub Actions<br>para generar los primeros datos.
+    </p>`;
+}
+
+cargarDatos().then(d => d ? render(d) : renderError());
+</script>
+</body>
+</html>
