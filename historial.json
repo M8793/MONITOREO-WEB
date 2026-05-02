@@ -4,28 +4,28 @@
       "nombre": "Justicia Canarias – Procesos Selectivos",
       "url": "https://www.gobiernodecanarias.org/justicia/RecursosHumanos/ProcesosSelectivos/",
       "estado": "ok",
-      "ultima_comprobacion": "2026-05-01T17:06:59.629819",
+      "ultima_comprobacion": "2026-05-02T16:59:36.276323",
       "ultimo_cambio": null
     },
     {
       "nombre": "Cabildo de La Palma – Empleo Público",
       "url": "https://sedeelectronica.cabildodelapalma.es/sta/CarpetaPublic/doEvent?APP_CODE=STA&PAGE_CODE=PTS2_EMPLEO",
       "estado": "ok",
-      "ultima_comprobacion": "2026-05-01T17:06:59.629819",
+      "ultima_comprobacion": "2026-05-02T16:59:36.276323",
       "ultimo_cambio": null
     },
     {
       "nombre": "SCS – Listas de Empleo y Supletorias",
       "url": "https://www3.gobiernodecanarias.org/sanidad/scs/contenidoGenerico.jsp?idDocument=b66c1847-b3d7-11eb-9269-832e239ed123&idCarpeta=61e907e3-d473-11e9-9a19-e5198e027117",
       "estado": "ok",
-      "ultima_comprobacion": "2026-05-01T17:06:59.629819",
+      "ultima_comprobacion": "2026-05-02T16:59:36.276323",
       "ultimo_cambio": "2026-04-30T17:39:31.207792"
     },
     {
       "nombre": "SEPE – Funcionarios Interinos",
       "url": "https://www.sepe.es/HomeSepe/que-es-el-sepe/convocatorias/funcionarios-interinos.html",
       "estado": "ok",
-      "ultima_comprobacion": "2026-05-01T17:06:59.629819",
+      "ultima_comprobacion": "2026-05-02T16:59:36.276323",
       "ultimo_cambio": null
     }
   ],
@@ -177,5 +177,5 @@
       ]
     }
   ],
-  "ultima_comprobacion": "2026-05-01T17:06:59.629819"
+  "ultima_comprobacion": "2026-05-02T16:59:36.276323"
 }
