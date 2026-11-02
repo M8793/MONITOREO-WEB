@@ -4,42 +4,32 @@
       "nombre": "Justicia Canarias – Procesos Selectivos",
       "url": "https://www.gobiernodecanarias.org/justicia/RecursosHumanos/ProcesosSelectivos/",
       "estado": "ok",
-      "ultima_comprobacion": "2026-11-01T20:24:47.521058",
+      "ultima_comprobacion": "2026-11-02T23:24:17.647966",
       "ultimo_cambio": "2026-10-22T19:56:25.351200"
     },
     {
       "nombre": "Cabildo de La Palma – Empleo Público",
       "url": "https://sedeelectronica.cabildodelapalma.es/sta/CarpetaPublic/doEvent?APP_CODE=STA&PAGE_CODE=PTS2_EMPLEO",
       "estado": "ok",
-      "ultima_comprobacion": "2026-11-01T20:24:47.521058",
-      "ultimo_cambio": "2026-10-28T20:56:24.009146"
+      "ultima_comprobacion": "2026-11-02T23:24:17.647966",
+      "ultimo_cambio": "2026-11-02T23:24:17.647966"
     },
     {
       "nombre": "SCS – Listas de Empleo y Supletorias",
       "url": "https://www3.gobiernodecanarias.org/sanidad/scs/contenidoGenerico.jsp?idDocument=b66c1847-b3d7-11eb-9269-832e239ed123&idCarpeta=61e907e3-d473-11e9-9a19-e5198e027117",
       "estado": "ok",
-      "ultima_comprobacion": "2026-11-01T20:24:47.521058",
+      "ultima_comprobacion": "2026-11-02T23:24:17.647966",
       "ultimo_cambio": "2026-10-29T20:59:12.232014"
     },
     {
       "nombre": "SEPE – Funcionarios Interinos",
       "url": "https://www.sepe.es/HomeSepe/que-es-el-sepe/convocatorias/funcionarios-interinos.html",
       "estado": "ok",
-      "ultima_comprobacion": "2026-11-01T20:24:47.521058",
+      "ultima_comprobacion": "2026-11-02T23:24:17.647966",
       "ultimo_cambio": null
     }
   ],
   "historial": [
-    {
-      "fecha": "2026-05-28T18:40:10.523734",
-      "web": "SCS – Listas de Empleo y Supletorias",
-      "url": "https://www3.gobiernodecanarias.org/sanidad/scs/contenidoGenerico.jsp?idDocument=b66c1847-b3d7-11eb-9269-832e239ed123&idCarpeta=61e907e3-d473-11e9-9a19-e5198e027117",
-      "cambios": [
-        "[28/05/2026].",
-        "[28/05/2026].",
-        "[28/05/2026]."
-      ]
-    },
     {
       "fecha": "2026-06-01T20:22:03.651575",
       "web": "SCS – Listas de Empleo y Supletorias",
@@ -1182,7 +1172,18 @@
         "[29/10/2026].",
         "[29/10/2026]."
       ]
+    },
+    {
+      "fecha": "2026-11-02T23:24:17.647966",
+      "web": "Cabildo de La Palma – Empleo Público",
+      "url": "https://sedeelectronica.cabildodelapalma.es/sta/CarpetaPublic/doEvent?APP_CODE=STA&PAGE_CODE=PTS2_EMPLEO",
+      "cambios": [
+        "Cabildo Insular de la Palma - Sede Electrónica - Portal del proveedor",
+        "Mensaje de Error",
+        "Lamentablemente se ha producido un error, puede volver a intentarlo.",
+        "Volver al inicio"
+      ]
     }
   ],
-  "ultima_comprobacion": "2026-11-01T20:24:47.521058"
+  "ultima_comprobacion": "2026-11-02T23:24:17.647966"
 }
